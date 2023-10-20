@@ -1,12 +1,11 @@
 import Image from "next/image";
 
-
 export default function Tenis() {
     return (
       <div>
-        <h1>CAMISA</h1>
+        <h1>Tenis</h1>
         <div>
-          <p>Camisa</p>
+          <p>Tenis</p>
           <figure>
             <Image
               width={250}
@@ -18,8 +17,7 @@ export default function Tenis() {
             />
           </figure>
         </div>
-  
+
       </div>
     );
   }
-  

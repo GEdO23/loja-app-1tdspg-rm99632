@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .error404 {
+        @apply bg-red-500 font-extrabold h-full w-full fixed;
+
+        & h1 {
+            @apply text-center mb-5
+        }
+        & img {
+            @apply mx-auto w-52;
+        }
+        & p {
+            @apply text-center mt-5;
+        }
+    }
+
+}
+
+@layer components {
+    
+}

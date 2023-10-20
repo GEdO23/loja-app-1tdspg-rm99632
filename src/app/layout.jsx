@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import Cabecalho from "../components/Cabecalho/Cabecalho";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,15 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
       <body className={inter.className}>
-        <header className="bg-slate-700 h-20 text-white">
-          <nav>
-            <ul>
-              <li><Link href="/">↪ Home</Link></li>
-              <li><Link href="/produtos/camisa">↪ Camisas</Link></li>
-              <li><Link href="/produtos/tenis">↪ Tenis</Link></li>
-            </ul>
-          </nav>
-        </header>
+        <Cabecalho/>
         {children}
       </body>
     </html>

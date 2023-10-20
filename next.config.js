@@ -15,6 +15,12 @@ module.exports = {
         hostname: "http2.mlstatic.com",
         port: "",
         pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "http.cat",
+        port: "",
+        pathname: "/images/**",
       }
     ],
   },
