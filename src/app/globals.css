@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .cabecalho {
+        @apply bg-slate-700 text-white;
+
+        & ul {
+            @apply flex justify-center items-center;
+            & li {
+                @apply inline m-7;
+
+                & a {
+                    @apply 
+                    block font-extrabold rounded-md px-5 py-2
+                    transition-all ease-out duration-300
+                    hover:bg-white hover:text-black;
+                }
+            }
+        }
+        
+    }
+}
+
 @layer utilities {
     .error404 {
         @apply bg-red-500 font-extrabold h-full w-full fixed;
@@ -17,8 +38,4 @@
         }
     }
 
-}
-
-@layer components {
-    
 }
