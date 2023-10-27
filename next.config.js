@@ -21,6 +21,12 @@ module.exports = {
         hostname: "http.cat",
         port: "",
         pathname: "/images/**",
+      },
+      {
+        protocol: "https",
+        hostname: "70096.cdn.simplo7.net",
+        port: "",
+        pathname: "/static/**",
       }
     ],
   },

@@ -1,15 +1,15 @@
+import Image from "next/image";
+import Link from "next/link";
 
 export default async function ListaQueijos() {
 
     let queijos;
     try {
-        const response = await fetch("http://localhost:3000/api/laticinios");
+        const response = await fetch("http://localhost:3000/api/laticinios/0");
         queijos = await response.json();
     } catch (error) {
         console.log(error);
     }
-
-
 
     return (
         <div>
@@ -18,7 +18,14 @@ export default async function ListaQueijos() {
                 <ul>
                     {queijos.map((queijo)=> (
                         <li key={queijo.id}>
-                            <p>{queijo.id} - {queijo.nome}</p>
+                            <h1>Nome: {queijo.nome}</h1>
+                            <h2>Tipo: {queijo.tipo}</h2>
+                            <figure>
+                                <Link href={`/fazenda/${queijo.id}`}>
+                                    <Image width={100} height={100} src={queijo.img} alt={queijo.nome}/>
+                                </Link>
+                                <figcaption>{queijo.descricao} - <span>R$ {queijo.preco}</span></figcaption>
+                            </figure>
                         </li>
                     ))}
                 </ul>
