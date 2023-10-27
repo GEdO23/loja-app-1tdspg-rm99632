@@ -77,12 +77,12 @@ const queijos = [
 ];
 
 export async function GET(request, {params}) {
-  // GET BY ID
+  //GET BY ID
   const id = params.id;
-  if(id > 0 && id <= queijos.length) {
-    return NextResponse.json(queijos.find(queijo => queijo.id = id));
-  } else {
-    // GET ALL
-    return id == 0 ? NextResponse.json(queijos) : NextResponse.redirect('http://localhost:3000/error')
-  }
+    if(id > 0 && id <= queijos.length) {
+      return NextResponse.json(queijos.find(queijo => queijo.id == id));
+    }else{
+      //GET ALL
+      return id == 0 ? NextResponse.json(queijos) : NextResponse.redirect('http://localhost:3000/error');
+    }
 }
