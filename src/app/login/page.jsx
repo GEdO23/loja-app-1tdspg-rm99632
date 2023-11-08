@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react"
 
@@ -111,6 +112,12 @@ export default function Login() {
                         </div>
                         <div>
                             <button>LOGIN</button>
+                        </div>
+                        <div>
+                            <p>
+                                Se você ainda não possui registro. 
+                                <Link href="/cad-user" className=" text-blue-700 underline">CLIQUE AQUI</Link>
+                            </p>
                         </div>
                     </fieldset>
                 </form>
