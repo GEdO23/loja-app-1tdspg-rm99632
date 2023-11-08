@@ -35,6 +35,15 @@
         }
         
     }
+
+    .rodape {
+        @apply bg-gray-950 text-white h-14 fixed w-full bottom-0;
+
+        & div {
+            @apply w-full h-full flex items-center justify-center;
+        }
+        
+    }
 }
 
 @layer utilities {
