@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react"
 
 export default function Login() {
-    const router = useRouter();
+    const navigate = useRouter();
 
     // Este useState, representa o objeto usuário, enquanto está sendo preenchdio no form e
     // em qualquer momento dentro do componente
@@ -14,6 +14,22 @@ export default function Login() {
     })
 
     const[msg, setmsg] = useState("");
+
+    const msgLoginSucesso = "Usuário Validado com Sucesso!";
+    const msgLoginErro = "Email ou Senha incorretos...";
+
+    const [classeLoginMsg, setClasseLoginMsg] = useState("");
+
+    useEffect(() => {
+        if (msg == msgLoginSucesso) {
+            setClasseLoginMsg("login-sucesso");
+        } else if (msg == msgLoginErro) {
+            setClasseLoginMsg("login-erro");
+        } else {
+            setClasseLoginMsg("login-none");
+        }
+
+    }, [msg])
 
     const handleChange = (e)=> {
         // Destructuring dos campos que estão sendo digitados!
@@ -43,16 +59,23 @@ export default function Login() {
             if (response.ok) {
                 const status = await response.json();
                 if(status.status) {
-                    setmsg("Usuário Validado com Sucesso!");
-                    router.push("/");
+                    setmsg(msgLoginSucesso);
+
+                    setTimeout(()=> {
+                        setmsg("");
+                        navigate.push("/");
+                    }, 5000);
 
                 } else {
-                    setmsg("Email ou Senha incorretos...");
+                    setmsg(msgLoginErro);
 
-                    setUsuario({
-                        "email": "",
-                        "senha" : ""
-                    });
+                    setTimeout(()=> {
+                        setmsg("");
+                        setUsuario({
+                            "email": "",
+                            "senha" : ""
+                        });
+                    }, 5000);
                 }
 
                 setTimeout(()=> {
@@ -68,7 +91,7 @@ export default function Login() {
     return (
         <div>
             <h1>Informações de Usuários:</h1>
-            <h2>{msg}</h2>
+            <h2 className={classeLoginMsg}>{msg}</h2>
 
             <div>
                 <form onSubmit={handleSubmit}>
