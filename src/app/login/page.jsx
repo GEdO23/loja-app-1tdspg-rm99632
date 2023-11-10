@@ -58,8 +58,20 @@ export default function Login() {
             });
 
             if (response.ok) {
-                const status = await response.json();
-                if(status.status) {
+                const data = await response.json();
+                if(data.status) {
+                    //Lembrando os métodos da sessionStorage são setItem e getItem para inserir e recuperar dados.
+                    //Ex: sessionStorage.setItem("token", token);
+                    //Para remover dados utilizamos o método removeItem, passando o nome do item a ser removido.
+                    //Ex: sessionStorage.removeItem("token");
+
+                    //Gerar o token JWT e armazenar no sessionStorage do navegador.
+                    const token = Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2);
+                    //Armazenando o token no sessionStorage do navegador do usuário.
+                    sessionStorage.setItem("token-user", token);
+                    
+                    sessionStorage.setItem("obj-user", JSON.stringify(data.user));
+
                     setmsg(msgLoginSucesso);
 
                     setTimeout(()=> {

@@ -39,7 +39,7 @@ export async function POST(request, response) {
             // Validando o usúario de fato:
             if (userInfo.email == userRequest.email && userInfo.senha == userRequest.senha) {
                 console.log("Usuário logado!");
-                return NextResponse.json({"status": true})
+                return NextResponse.json({"status": true, "user": userInfo})
             }
         }
     } catch (error) {
